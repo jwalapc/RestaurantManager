@@ -1,10 +1,6 @@
 package com.restaurant.manager.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class OrderItem {
@@ -13,20 +9,31 @@ public class OrderItem {
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name = "order_id", nullable = false)
     private Order order;
 
-    // Other fields as needed
+    @ManyToOne
+    @JoinColumn(name = "item_id", nullable = false)
+    private Item item;
+
+    private int quantity;
+
+    // Constructors, getters, setters
 
     public OrderItem() {
     }
 
-    public OrderItem(Order order) {
+    public OrderItem(Order order, Item item, int quantity) {
         this.order = order;
+        this.item = item;
+        this.quantity = quantity;
     }
 
-    // Other constructors, getters, and setters as needed
-
-    public OrderItem(OrderItem item) {
+    // Copy constructor
+    public OrderItem(OrderItem orderItem) {
+        this.order = orderItem.order;
+        this.item = orderItem.item;
+        this.quantity = orderItem.quantity;
     }
 
     public Long getId() {
@@ -39,5 +46,21 @@ public class OrderItem {
 
     public void setOrder(Order order) {
         this.order = order;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

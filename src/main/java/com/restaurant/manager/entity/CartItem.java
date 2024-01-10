@@ -31,9 +31,11 @@ public class CartItem {
         this.quantity = quantity;
     }
 
-    // Other constructors, getters, and setters as needed
-
-    public CartItem(CartItem item2) {
+    // Copy constructor
+    public CartItem(CartItem cartItem) {
+        this.cart = cartItem.cart;
+        this.item = cartItem.item;
+        this.quantity = cartItem.quantity;
     }
 
     public Long getId() {

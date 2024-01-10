@@ -6,7 +6,6 @@ import java.util.List;
 
 @Entity
 public class Order {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -33,7 +32,7 @@ public class Order {
         this.totalAmount = order.totalAmount;
 
         for (OrderItem item : order.items) {
-            this.items.add(new OrderItem(item)); // Use the OrderItem copy constructor
+            this.items.add(new OrderItem(item));
         }
     }
 
