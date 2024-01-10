@@ -1,5 +1,7 @@
 package com.restaurant.manager.repository;
 
-public class CartRepository {
-    
+import com.restaurant.manager.entity.Cart;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CartRepository extends JpaRepository<Cart, Long> {
 }

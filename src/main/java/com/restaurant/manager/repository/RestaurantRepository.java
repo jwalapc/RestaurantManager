@@ -1,5 +1,7 @@
 package com.restaurant.manager.repository;
 
-public class RestaurantRepository {
-    
+import com.restaurant.manager.entity.Restaurant;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface RestaurantRepository extends JpaRepository<Restaurant, Long> {
 }
