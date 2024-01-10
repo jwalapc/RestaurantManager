@@ -12,4 +12,31 @@ public class Order {
     private Long id;
 
     // Constructors, getters, setters
+
+    public Order() {
+    }
+
+    public Order(Long id) {
+        this.id = id;
+    }
+
+    public Order(Order order) {
+        this.id = order.id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+
+    public void setId(Long id){
+        this.id = id;
+    }
+
+    
+
+
+
+
+
 }

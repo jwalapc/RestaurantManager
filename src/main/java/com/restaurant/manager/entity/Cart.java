@@ -12,4 +12,26 @@ public class Cart {
     private Long id;
 
     // Constructors, getters, setters
+
+    public Cart() {
+    }
+
+    public Cart(Long id) {
+        this.id = id;
+    }
+
+    public Cart(Cart cart) {
+        this.id = cart.id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+
+    public void setId(Long id){
+        this.id = id;
+    }
+
+
 }
