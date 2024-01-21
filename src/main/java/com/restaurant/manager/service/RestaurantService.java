@@ -1,5 +1,6 @@
 package com.restaurant.manager.service;
 
+import com.restaurant.manager.dto.RestaurantDTO;
 import com.restaurant.manager.entity.Restaurant;
 import com.restaurant.manager.repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,16 +23,16 @@ public class RestaurantService {
         return restaurantRepository.findById(id);
     }
 
-    public Restaurant createRestaurant(Restaurant restaurant) {
+    public Restaurant createRestaurant(RestaurantDTO restaurantDTO) {
+        Restaurant restaurant = new Restaurant(restaurantDTO.getName());
         return restaurantRepository.save(restaurant);
     }
 
-    public Restaurant updateRestaurant(Long id, Restaurant updatedRestaurant) {
+    public Restaurant updateRestaurant(Long id, RestaurantDTO updatedRestaurantDTO) {
         Restaurant existingRestaurant = restaurantRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Restaurant not found with id: " + id));
 
-        // Update existingRestaurant properties with values from updatedRestaurant
-        existingRestaurant.setName(updatedRestaurant.getName());
+        existingRestaurant.setName(updatedRestaurantDTO.getName());
 
         return restaurantRepository.save(existingRestaurant);
     }

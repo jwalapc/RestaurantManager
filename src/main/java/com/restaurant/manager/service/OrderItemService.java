@@ -30,7 +30,6 @@ public class OrderItemService {
         OrderItem existingOrderItem = orderItemRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("OrderItem not found with id: " + id));
 
-        // Update existingOrderItem properties with values from updatedOrderItem
         existingOrderItem.setQuantity(updatedOrderItem.getQuantity());
 
         return orderItemRepository.save(existingOrderItem);

@@ -1,9 +1,7 @@
 package com.restaurant.manager.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Restaurant {
@@ -12,10 +10,14 @@ public class Restaurant {
     private Long id;
     private String name;
 
+    // Establishing a One-to-Many relationship with Item
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Item> items;
+
     // Constructors, getters, setters
 
     public Restaurant() {
-    }   
+    }
 
     public Restaurant(String name) {
         this.name = name;
@@ -39,6 +41,13 @@ public class Restaurant {
         return name;
     }
 
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
 
     public void setId(Long id){
         this.id = id;
@@ -47,6 +56,4 @@ public class Restaurant {
     public void setName(String name){
         this.name = name;
     }
-
-
 }
